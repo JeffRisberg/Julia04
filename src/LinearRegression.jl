@@ -4,8 +4,12 @@ LinearRegression:
 - Author: jeff
 - Date: 2021-05-07
 =#
+import Pkg; Pkg.add("PyPlot")
+
 using CSV, DataFrames, GLM
 using Printf
+using PyPlot    # for drawing plots
+
 
 df = DataFrame(CSV.File("data.csv"))
 println(df)
@@ -37,3 +41,19 @@ intercept = (sum_y - slope * sum_x) / (n)
 
 ols = lm(@formula(y ~ x), df)
 println(ols)
+
+# Creating a new figure object
+fig = figure()
+
+# Plot two datasets
+plot(df[!, "x"], df[!, "y"], color = "black", linewidth = 2.0, marker = "o", linestyle = "None")
+
+# Label axes
+xlabel("x", fontsize = "xx-large")
+ylabel("y", fontsize = "xx-large")
+
+# Save the figure as PNG and PDF
+savefig("fit_plot.png")
+
+# Closr the figure object
+close(fig)
