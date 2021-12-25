@@ -1,6 +1,5 @@
 #=
 LightGraphs:
-- Julia version: 1.6.1
 - Author: jeff
 - Date: 2021-05-06
 =#
